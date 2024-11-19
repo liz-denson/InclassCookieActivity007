@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <header>
     <div class="ui attached stackable grey inverted  menu">
         <div class="ui container">

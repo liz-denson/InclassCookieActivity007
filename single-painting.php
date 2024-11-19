@@ -1,8 +1,8 @@
 <?php
+session_start();
+
 include 'includes/data.inc.php';
 include 'includes/art-functions.inc.php';
-
-// TODO: start session
 
 // is there an ID passed?
 $id = 406;
