@@ -1,31 +1,28 @@
 <?php
-session_start();
+$favorites = [];
+if (isset($_COOKIE['favorites'])) {
+    $favorites = json_decode($_COOKIE['favorites'], true) ?? [];
+}
 ?>
 
 <!DOCTYPE html>
-<html lang=en>
+<html lang="en">
 <head>
-    <meta charset=utf-8>
+    <meta charset="utf-8">
     <link href='http://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="css/semantic.js"></script>
-
-
-    <link href="css/semantic.css" rel="stylesheet" >
-    <link href="css/icon.css" rel="stylesheet" >
+    <link href="css/semantic.css" rel="stylesheet">
+    <link href="css/icon.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
-
-
 </head>
-<body >
+<body>
 
 <?php include 'includes/art-header.inc.php'; ?>
 
 <main class="ui container">
-
-    <section class="ui basic segment ">
+    <section class="ui basic segment">
         <h2>Favorites</h2>
         <table class="ui basic collapsing table">
             <thead>
@@ -33,11 +30,12 @@ session_start();
                 <th>Image</th>
                 <th>Title</th>
                 <th>Action</th>
-            </tr></thead>
+            </tr>
+            </thead>
             <tbody>
             <?php
-            if (isset($_SESSION['favorites']) && count($_SESSION['favorites']) > 0) {
-                foreach ($_SESSION['favorites'] as $favorite) {
+            if (count($favorites) > 0) {
+                foreach ($favorites as $favorite) {
                     echo '<tr>';
                     echo '<td><img src="images/art/square-medium/' . htmlspecialchars($favorite['ImageFileName']) . '.jpg" alt="' . htmlspecialchars($favorite['Title']) . '"></td>';
                     echo '<td><a href="single-painting.php?id=' . htmlspecialchars($favorite['PaintingID']) . '">' . htmlspecialchars($favorite['Title']) . '</a></td>';
@@ -50,19 +48,20 @@ session_start();
             ?>
             </tbody>
             <tfoot class="full-width">
-            <th colspan="3">
-                <a class="ui left floated small primary labeled icon button" href="remove-favorites.php?removeAll=true">
-                    <i class="remove circle icon"></i> Remove All Favorites
-                </a>
-            </th>
+                <tr>
+                    <th colspan="3">
+                        <a class="ui left floated small primary labeled icon button" href="remove-favorites.php?removeAll=true">
+                            <i class="remove circle icon"></i> Remove All Favorites
+                        </a>
+                    </th>
+                </tr>
             </tfoot>
         </table>
     </section>
-
 </main>
 
 <footer class="ui black inverted segment">
     <div class="ui container">footer</div>
 </footer>
 </body>
-</html>    
+</html>

@@ -1,14 +1,14 @@
 <?php
-session_start();
-
 if (isset($_GET['removeAll']) && $_GET['removeAll'] === 'true') {
-    unset($_SESSION['favorites']);
+    setcookie('favorites', '', time() - 3600, "/");
 } elseif (isset($_GET['id'])) {
     $paintingID = $_GET['id'];
-    if (isset($_SESSION['favorites'])) {
-        $_SESSION['favorites'] = array_filter($_SESSION['favorites'], function ($favorite) use ($paintingID) {
+    if (isset($_COOKIE['favorites'])) {
+        $favorites = json_decode($_COOKIE['favorites'], true) ?? [];
+        $favorites = array_filter($favorites, function ($favorite) use ($paintingID) {
             return $favorite['PaintingID'] != $paintingID;
         });
+        setcookie('favorites', json_encode($favorites), time() + (86400 * 30), "/");
     }
 }
 

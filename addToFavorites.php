@@ -1,17 +1,16 @@
 <?php
-session_start();
-
 if (isset($_GET['PaintingID']) && isset($_GET['ImageFileName']) && isset($_GET['Title'])) {
     $paintingID = $_GET['PaintingID'];
     $imageFileName = $_GET['ImageFileName'];
     $title = $_GET['Title'];
 
-    if (!isset($_SESSION['favorites'])) {
-        $_SESSION['favorites'] = [];
+    $favorites = [];
+    if (isset($_COOKIE['favorites'])) {
+        $favorites = json_decode($_COOKIE['favorites'], true) ?? [];
     }
 
     $isAlreadyFavorite = false;
-    foreach ($_SESSION['favorites'] as $favorite) {
+    foreach ($favorites as $favorite) {
         if ($favorite['PaintingID'] == $paintingID) {
             $isAlreadyFavorite = true;
             break;
@@ -19,12 +18,13 @@ if (isset($_GET['PaintingID']) && isset($_GET['ImageFileName']) && isset($_GET['
     }
 
     if (!$isAlreadyFavorite) {
-        $_SESSION['favorites'][] = [
+        $favorites[] = [
             'PaintingID' => $paintingID,
             'ImageFileName' => $imageFileName,
             'Title' => $title
         ];
     }
+    setcookie('favorites', json_encode($favorites), time() + (86400 * 30), "/");
 }
 
 header('Location: view-favorites.php');
