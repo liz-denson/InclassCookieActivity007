@@ -1,4 +1,5 @@
 <?php
+session_start();
 if (isset($_GET['PaintingID']) && isset($_GET['ImageFileName']) && isset($_GET['Title'])) {
     $paintingID = $_GET['PaintingID'];
     $imageFileName = $_GET['ImageFileName'];

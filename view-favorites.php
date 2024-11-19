@@ -1,4 +1,5 @@
 <?php
+session_start();
 $favorites = [];
 if (isset($_COOKIE['favorites'])) {
     $favorites = json_decode($_COOKIE['favorites'], true) ?? [];

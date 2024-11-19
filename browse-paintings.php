@@ -1,7 +1,7 @@
 <?php
-global $paintings;
 session_start();
 
+global $paintings;
 include 'includes/data.inc.php';
 include 'includes/art-functions.inc.php';
 $filter = "All Paintings [Top 20]";  

@@ -1,4 +1,5 @@
 <?php
+session_start();
 if (isset($_GET['removeAll']) && $_GET['removeAll'] === 'true') {
     setcookie('favorites', '', time() - 3600, "/");
 } elseif (isset($_GET['id'])) {
