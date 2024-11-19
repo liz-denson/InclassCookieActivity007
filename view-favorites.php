@@ -51,7 +51,7 @@ session_start();
             </tbody>
             <tfoot class="full-width">
             <th colspan="3">
-                <a class="ui left floated small primary labeled icon button" href="remove-favorites.php">
+                <a class="ui left floated small primary labeled icon button" href="remove-favorites.php?removeAll=true">
                     <i class="remove circle icon"></i> Remove All Favorites
                 </a>
             </th>
