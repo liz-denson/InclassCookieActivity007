@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <header>
     <div class="ui attached stackable grey inverted  menu">
         <div class="ui container">
@@ -16,13 +13,14 @@ session_start();
                     <a class="item"><i class="settings icon"></i> Account Settings</a>
                   </div>
                 </div>
-                <a class=" item" href="view-favorites.php">
+                <a class="item" href="view-favorites.php">
                   <i class="heartbeat icon"></i> Favorites
                   <?php
-                  if (isset($_SESSION['favorites'])) {
-                    echo '<div class="ui red mini label">';
-                    echo count($_SESSION['favorites']);
-                    echo '</div>';
+                  session_start();
+                  if (isset($_SESSION['favorites']) && count($_SESSION['favorites']) > 0) {
+                      echo '<div class="ui red mini label">';
+                      echo count($_SESSION['favorites']);
+                      echo '</div>';
                   }
                   ?>
                   
