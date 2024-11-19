@@ -38,7 +38,7 @@ $filter = "All Paintings [Top 20]";
           <?php  foreach ($paintings as $work) { ?>
 
           <li class="item">
-            <a class="ui small image" href="single-painting.php?id=<?php echo $work['PaintingID']; ?>"><img src="images/art/works/square-medium/<?php echo $work['ImageFileName']; ?>.jpg"></a>
+            <a class="ui small image" href="single-painting.php?id=<?php echo $work['PaintingID']; ?>"><img src="images/art/square-medium/<?php echo $work['ImageFileName']; ?>.jpg"></a>
             <div class="content">
               <a class="header" href="single-painting.php?id=<?php echo $work['PaintingID']; ?>"><?php echo utf8_encode($work['Title']); ?></a>
               <div class="meta"><span class="cinema"><?php echo makeArtistName($work['FirstName'],$work['LastName']); ?></span></div>        
