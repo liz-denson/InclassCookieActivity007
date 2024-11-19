@@ -61,8 +61,14 @@ foreach($paintings as $p) {
                 <?php include 'includes/painting-small-tabs.inc.php'; ?>
                 
                 <!-- Cart and Price -->
-                <?php include 'includes/cart-box.inc.php'; ?>                        
-                          
+                <?php include 'includes/cart-box.inc.php'; ?>
+
+                <!-- Add to Favorites Button -->
+                <a class="ui orange button"
+                   href="addToFavorites.php?PaintingID=<?php echo $row['PaintingID']; ?>&ImageFileName=<?php echo $row['ImageFileName']; ?>&Title=<?php echo urlencode($row['Title']); ?>">
+                    <i class="heart icon"></i> Add to Favorites
+                </a>
+
             </div>
         </div>
     </section>
