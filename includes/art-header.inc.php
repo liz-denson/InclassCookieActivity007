@@ -16,7 +16,6 @@
                 <a class="item" href="view-favorites.php">
                   <i class="heartbeat icon"></i> Favorites
                   <?php
-                  session_start();
                   if (isset($_SESSION['favorites']) && count($_SESSION['favorites']) > 0) {
                       echo '<div class="ui red mini label">';
                       echo count($_SESSION['favorites']);
