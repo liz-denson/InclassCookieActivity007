@@ -1,4 +1,5 @@
 <?php
+global $paintings;
 session_start();
 
 include 'includes/data.inc.php';
@@ -7,7 +8,7 @@ include 'includes/art-functions.inc.php';
 // is there an ID passed?
 $id = 406;
 if (isset($_GET['id'])) {
-    $id = $_GET['id']; 
+    $id = $_GET['id'];
 }
 // find the appropriate painting/row
 foreach($paintings as $p) {
