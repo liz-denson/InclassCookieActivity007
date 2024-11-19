@@ -43,8 +43,8 @@
       <i class="add to cart icon"></i>
       Add to Cart
     </a>
-    <a class="ui right labeled icon button" href="addToFavorites.php?PaintingID=<?php echo $row['PaintingID']; ?>&ImageFileName=<?php echo $row['ImageFileName']; ?>&Title=<?php echo urlencode($row['Title']); ?>">
+    <a class="ui right labeled icon button" href="javascript:void(0)" onclick="addToFavorites('<?php echo $row['PaintingID']; ?>', '<?php echo $row['ImageFileName']; ?>', '<?php echo addslashes($row['Title']); ?>')">
       <i class="heart icon"></i>
       Add to Favorites
     </a>        
-</div>  
+</div>

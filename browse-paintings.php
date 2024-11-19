@@ -1,4 +1,5 @@
 <?php
+global $paintings;
 session_start();
 
 include 'includes/data.inc.php';
@@ -50,7 +51,7 @@ $filter = "All Paintings [Top 20]";
               </div>
               <div class="extra">
                 <a class="ui icon orange button" href="cart.php?id=<?php echo $work['PaintingID']; ?>"><i class="add to cart icon"></i></a>
-                <a class="ui icon button" href="addToFavorites.php?PaintingID=<?php echo $work['PaintingID']; ?>&ImageFileName=<?php echo $work['ImageFileName']; ?>&Title=<?php echo urlencode($work['Title']); ?>"><i class="heart icon"></i></a>
+                <a class="ui icon button" href="javascript:void(0)" onclick="addToFavorites('<?php echo $work['PaintingID']; ?>', '<?php echo $work['ImageFileName']; ?>', '<?php echo addslashes($work['Title']); ?>')"><i class="heart icon"></i></a>
               </div>
             </div>      
           </li>

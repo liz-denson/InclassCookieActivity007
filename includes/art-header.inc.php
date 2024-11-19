@@ -13,21 +13,18 @@
                     <a class="item"><i class="settings icon"></i> Account Settings</a>
                   </div>
                 </div>
-                <a class="item" href="view-favorites.php">
-                  <i class="heartbeat icon"></i> Favorites
+                <a class="item" href="view-favorites.php" id="favorites-link">
+                    <i class="heartbeat icon"></i> Favorites
                     <?php
                     $favoritesCount = 0;
                     if (isset($_COOKIE['favorites'])) {
                         $favorites = json_decode($_COOKIE['favorites'], true) ?? [];
                         $favoritesCount = count($favorites);
                     }
-                    if ($favoritesCount > 0) {
-                        echo '<div class="ui red mini label">';
-                        echo $favoritesCount;
-                        echo '</div>';
-                    }
                     ?>
-
+                    <div class="ui red mini label" data-favorites-count="<?php echo $favoritesCount; ?>">
+                        <?php echo $favoritesCount > 0 ? $favoritesCount : ''; ?>
+                    </div>
                 </a>
                 <a class=" item">
                   <i class="shop icon"></i> Cart
